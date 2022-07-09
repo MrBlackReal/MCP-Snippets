@@ -18,7 +18,7 @@ public class RenderUtil {
 	private static ShaderGroup blurShader;
 	private static Framebuffer buffer;
 
-    private static void setShaderConfigs(float intensity, float blurWidth, float blurHeight) {
+    private static void setShaderConfig(float intensity, float blurWidth, float blurHeight) {
 		blurShader.getShaders().get(0).getShaderManager().getShaderUniform("Radius").set(intensity);
 		blurShader.getShaders().get(1).getShaderManager().getShaderUniform("Radius").set(intensity);
 
@@ -37,7 +37,7 @@ public class RenderUtil {
 		}
 	}
 
-    public static void blurArea(float x, float y, float width, float height, float intensity) {
+    public static void drawBluredRect(float x, float y, float width, float height, float intensity) {
 		final ScaledResolution sr = new ScaledResolution(mc);
 
 		intensity = Math.max(intensity, 1);
@@ -59,7 +59,7 @@ public class RenderUtil {
 			GL11.glScissor((int) (x * scaleFactor), (int) (mc.displayHeight - (y * scaleFactor) - height * scaleFactor), (int) (width * scaleFactor), (int) (height) * scaleFactor);
 			GL11.glEnable(GL11.GL_SCISSOR_TEST);
 
-			setShaderConfigs(intensity, 1, 0);
+			setShaderConfig(intensity, 1, 0);
 			buffer.bindFramebuffer(true);
 			blurShader.loadShaderGroup(mc.timer.renderPartialTicks);
 			
