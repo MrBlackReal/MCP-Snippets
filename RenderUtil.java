@@ -70,7 +70,7 @@ public class RenderUtil {
 			GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ZERO, GL11.GL_ONE);
 			GlStateManager.disableBlend();
 			
-			GL11.glScalef(scaleFactor, scaleFactor, 0);
+			GL11.glScalef(scaleFactor * .5f, scaleFactor * .5f, 0);
 		}
 	}
 }
