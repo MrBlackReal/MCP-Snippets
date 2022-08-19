@@ -15,10 +15,11 @@ public class RenderUtil {
 
 	private static final Minecraft mc = Minecraft.getMinecraft();
 
+	private static final ResourceLocation shader = new ResourceLocation("shaders/post/blur.json");
+
 	private static int lastScaleFactor;
-	private static int lastScaleWidth;
-	private static int lastScaleHeight;
-	private static ResourceLocation shader = new ResourceLocation("shaders/post/blur.json");
+	private static int lastScaleWidth, lastScaleHeight;
+
 	private static ShaderGroup blurShader;
 	private static Framebuffer buffer;
 
