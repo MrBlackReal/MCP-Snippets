@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.util.ResourceLocation;
@@ -31,7 +30,7 @@ public class RenderUtil {
 		blurShader.getShaders().get(1).getShaderManager().getShaderUniform("BlurDir").set(blurHeight, blurWidth);
 	}
 
-	public static void initFboAndShader(double d, int categoryY, int i, int j, float f) {
+	public static void initFboAndShader() {
 		try {
 			blurShader = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), shader);
 			blurShader.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
@@ -52,7 +51,7 @@ public class RenderUtil {
 		int scaledHeight = sr.getScaledHeight();
 
 		if (lastScaleFactor != scaleFactor || lastScaleWidth != scaledWidth || lastScaleHeight != scaledHeight || buffer == null || blurShader == null)
-			initFboAndShader(intensity, scaledHeight, scaledHeight, scaledHeight, intensity);
+			initFboAndShader();
 
 		lastScaleFactor = scaleFactor;
 		lastScaleWidth = scaledWidth;
